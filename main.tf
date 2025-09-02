@@ -49,4 +49,5 @@ module "redshift" {
   security_group_id     = module.network.redshift_security_group_id
   publicly_accessible   = var.publicly_accessible
   s3_bucket_name        = module.s3.bucket_name
+  redshift_subnet_group_name = module.network.redshift_subnet_group_name
 }

@@ -62,3 +62,8 @@ variable "s3_bucket_name" {
   description = "S3 bucket name for data storage"
   type        = string
 }
+
+variable "redshift_subnet_group_name" {
+  description = "Name of the Redshift cluster subnet group"
+  type        = string
+}
