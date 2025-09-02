@@ -8,4 +8,4 @@ node_type         = "ra3.large"
 number_of_nodes   = 1
 publicly_accessible = true
 vpc_cidr          = "10.0.0.0/16"
-s3_bucket_name    = "ecommerce-data-warehouse-raw"
+s3_bucket_name    = "ecommerce-data-warehouse-processed"

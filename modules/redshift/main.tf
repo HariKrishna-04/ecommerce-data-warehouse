@@ -1,5 +1,5 @@
 resource "aws_iam_role" "redshift_role" {
-  name = "${var.cluster_name}-role"
+  name = "${var.cluster_name}-role-${random_id.suffix.hex}"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -14,6 +14,10 @@ resource "aws_iam_role" "redshift_role" {
   })
 }
 
+resource "random_id" "suffix" {
+  byte_length = 4
+}
+
 resource "aws_iam_role_policy_attachment" "redshift_s3_access" {
   role       = aws_iam_role.redshift_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
@@ -26,7 +30,7 @@ resource "aws_redshift_cluster" "main" {
   master_password           = var.master_password
   node_type                 = var.node_type
   number_of_nodes           = var.number_of_nodes
-  cluster_subnet_group_name = aws_redshift_subnet_group.redshift_subnet_group.name
+  cluster_subnet_group_name = var.redshift_subnet_group_name
   vpc_security_group_ids    = [var.security_group_id]
   publicly_accessible       = var.publicly_accessible
   iam_roles                 = [aws_iam_role.redshift_role.arn]
@@ -35,9 +39,4 @@ resource "aws_redshift_cluster" "main" {
   tags = {
     Name = var.cluster_name
   }
-}
-
-resource "aws_redshift_subnet_group" "redshift_subnet_group" {
-  name       = "${var.cluster_name}-subnet-group"
-  subnet_ids = var.subnet_ids
 }
