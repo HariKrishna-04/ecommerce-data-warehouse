@@ -30,7 +30,7 @@ resource "aws_redshift_cluster" "main" {
   master_password           = var.master_password
   node_type                 = var.node_type
   number_of_nodes           = var.number_of_nodes
-  subnet_ids                = module.network.subnet_ids
+  cluster_subnet_group_name = var.redshift_subnet_group_name
   vpc_security_group_ids    = [var.security_group_id]
   publicly_accessible       = var.publicly_accessible
   iam_roles                 = [aws_iam_role.redshift_role.arn]
