@@ -6,12 +6,12 @@ output "redshift_endpoint" {
 
 output "redshift_database_name" {
   description = "Redshift database name"
-  value       = module.redshift.database_name
+  value       = module.redshift.redshift_database_name
 }
 
 output "redshift_master_username" {
   description = "Redshift master username"
-  value       = module.redshift.master_username
+  value       = module.redshift.redshift_master_username
 }
 
 output "s3_bucket_name" {
