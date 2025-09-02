@@ -45,7 +45,7 @@ module "redshift" {
   node_type             = var.node_type
   number_of_nodes       = var.number_of_nodes
   vpc_id                = module.network.vpc_id
-  cluster_subnet_group_name = module.network.redshift_subnet_group_name
+  subnet_ids            = module.network.subnet_ids
   security_group_id     = module.network.redshift_security_group_id
   publicly_accessible   = var.publicly_accessible
   s3_bucket_name        = module.s3.bucket_name
