@@ -34,7 +34,6 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
         aws-region: ${{ env.AWS_REGION }}
-        role-session-name: GitHubActions
 
     - name: Terraform Init
       run: terraform init
