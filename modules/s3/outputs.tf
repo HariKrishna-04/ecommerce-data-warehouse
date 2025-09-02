@@ -24,6 +24,5 @@ output "bucket_regional_domain_name" {
 }
 
 output "versioning_enabled" {
-  description = "Whether versioning is enabled"
-  value       = aws_s3_bucket_versioning.versioning.enabled
+  value = aws_s3_bucket_versioning.versioning.versioning_configuration[0].status
 }
