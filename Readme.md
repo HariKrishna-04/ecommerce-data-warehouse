@@ -100,47 +100,15 @@ In your GitHub repo, go to **Settings** → **Environments** → **prod** and **
 - `AWS_REGION` (e.g., `ap-south-1`)
 - `REDSHIFT_MASTER_PASSWORD`
 
-## 🌍 Environments
-
-We use multiple environments for different deployment stages:
-
-- **dev**: Development environment
-- **prod**: Production environment
-- **dev-plan**: Development plan-only environment
-- **prod-plan**: Production plan-only environment
-
-### Add a GitHub Environment
-
-1. Go to **Settings** → **Environments**
-2. Click "New environment", name it (e.g., `dev`)
-3. Under "Deployment protection rules", click "Required reviewers"
-4. Add your GitHub username (or a teammate)
-5. Click **Save**
-
-This will enforce manual approval before applying infrastructure.
-
-## 👥 Add Collaborators
-
-1. Go to your repo → **Settings** → **Collaborators**
-2. Click "Invite a collaborator"
-3. Enter your teammate's GitHub username
-4. Choose appropriate access (usually Write or Admin)
-5. Send invite
-
-> **Note**: If you're the owner, you cannot add yourself — you already have full access.
-
 ## 🔄 Workflow
 
-### Trigger on stage branch
-- Automatically runs `terraform init`, `plan`, and validation
-- Skips apply step (for preview only)
-
-### Trigger on main branch (Manual Approval)
+### Trigger on main branch (manually)
 1. Go to **Actions** → **Terraform CI/CD** → **Run workflow**
-2. Select the environment (`prod` or `dev`)
-3. Enter input confirmation
-4. Waits for approval (based on environment reviewers)
-5. Once approved, resources are deployed
+2. Select the environment (`staging` or `production`)
+3. Click `Run workflow` to deploy resources
+
+### Trigger on main branch (on push)
+-> on push to the main branch, the workflow starts automatically
 
 ## 🚀 Quick Start Deployment
 
